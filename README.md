@@ -137,5 +137,5 @@ ___docker inspect <NAME-OF-THE-CONTAINER-OR-ID\>___: inspecting Environment vair
 
 ___docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simple-webapp___
 
-[Chapter 1](#Chapter 1)
+[Chapter 1](#Chapter-1)
                  
