@@ -107,9 +107,25 @@ ___docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simpl
 - In order to access it we need port mapping like this: docker run -p 5555:5555 simplewebapp [docker run -p <HOST PORT>:<CONTAINER PORT> simplewebapp]
 - Multiple host ports can be mapped at once 'docker:- run -p 8080:8080 -p 50000:50000 -v /your/home:/var/jenkins_home jenkins'
 
-___docker run -p 3306:3306 mysql___
+- ___docker run -p 3306:3306 mysql___
+
+# Data persistance
+- Every docker container has its own file system, its same as the host machine.
+- If you delete the container then all the data it holds will also be gone
+- For example if we run mysql container then it will store the date in container at /var/lib/mysql
+- Now if we delete this container all the data stored at /var/lib/mysql will also be gone
+- A container supposed to be light weight, so that it can start and stop faster that is why its important to do volume mapping
+- To solve this problem we an do directory mapping from host to docker. 
+- with docker run -v /opt/datadir:/var/lib/mysql now docker will store the data at host machine at location /opt/datadir
+- now we can delete the container and the will still be safe at /opt/datadir.
+
+However:
+-  If we do not want to mapp the volume then the same container can be started again 
+   docker run -ia <CONTAINER: ID OR NAME>: all the data which was stored here, will still reside inside the container
 
 
+___docker inspect <CONTAINER NAME\>___: this will give all the information about the docker container in json fomat
+___docker logs <CONTAINER NAME\>___: will show the log output of the application, which was logged at stdout
 
 
 
