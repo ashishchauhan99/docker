@@ -1,3 +1,18 @@
+# Table of Content
+ [Chapter 1](#Chapter-1)
+ [Chapter 2](#Chapter-2)
+ [Docker useful commands](#Docker-useful-commands)
+ [Playing with Ubuntu Image](#Playing-with-Ubuntu-Image)
+ [Attache and detach mode](#Attache-and-detach-mode)
+ [Exploring docker container file system](#Exploring-docker-container-file-system)
+ [Attach to STDIN and to Terminal](#Attach-to-STDIN-and-to-Terminal)
+ [Port mapping](#Port-mapping)
+ [Data persistance](#Data-persistance)
+ [Finding base image of an image](#Finding-base-image-of-an-image)
+ [Environment variable](#Environment-variable)
+ 
+ 
+ 
 # Chapter 1
 1. different tools like mysql, nodejs may require different version of os. - this problem is solved with docker
 2. There is also a situation where one tool requires one version of certain library from and another tool another version - this problem is also sloved with docker
@@ -86,7 +101,7 @@ ___docker run redis___ : this will fetch the latest version of redis and run on 
                    
 ___docker run redis:<TAG\>___  : here the tag version can be mentioned in order to run a specific version or tag. for eg. docker run redis:4.0
 
-# Attach to STDIN and to Terminal-
+# Attach to STDIN and to Terminal
 - if we have a .sh script which prints on the terminal "please enter your name:" and then user enters his/her name through  stdin and then the
 script prints back the whole "please enter your name:<entered name>".
 
@@ -136,6 +151,4 @@ ___docker run -e <NAME-OF-ENVIRONMENT-VARIABLE\>:<VALUE-OF-ENVIRONMENT-VARIABLE\
 ___docker inspect <NAME-OF-THE-CONTAINER-OR-ID\>___: inspecting Environment vairable on an running image
 
 ___docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simple-webapp___
-
-[Chapter 1](#Chapter-1)
                  
