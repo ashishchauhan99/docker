@@ -6,6 +6,7 @@
 4. We can just download the image and use command 'docker run <IMAGE NAME>'
 5. docker run <IMAGE NAME>: is a shortcut for commands 'docker container create', 'docker container start'
 6. running 'docker run <IMAGE NAME>' multiple times will creates multiple containers
+7. in a docker image a process must be running otherwise it will exit immidietly that is why when we run _docker run ubunut_ it will exited immidietly  
 
 - in hypervisor multiple os can be ran even though they do not share the same os kernal, however in Docker multiple container can be run in parellel only when they are based on the same kernal
 
@@ -57,11 +58,56 @@ ___docker run ubuntu seleep 5___: will run the sleep command on ubuntu and keep 
 
 ___docker run ubuntu bash___: will get you into the bash and then you can run all linux commands, exit will exit the bash and you will back an docker console.
 
+# Attache and detach mode
+___docker run <IMAGE-NAME\>___: this will attache the console and print all the output comes from the image. User here will not be able to do anyting else. 
+                                Ctrl + c will stop the container. Stdin, stdout and stderr are attached here. 
+
+___docker run -d <IMAGE-NAME\>___: this will run the image in deattached mode control will be returned to the main console. This will command will return the id of the container. Even after closing the terminal containers will still be rnning in background and could be enquired with docker ps. 
 
 
+___docker attach <ID or NAME OF CONTAINER\>___ : if you want to attach the console to a running container then just use this command. Any command which takes docker ID only few first chars of the long id can be mentioned in the command instead of the whole id.
+
+___docker exec <OPTIONS\> <CONTAINER: ID OR NAME\>___: command : this command will be executed on the running container
 
 
+# Exploring docker container file system
+https://www.baeldung.com/ops/docker-container-filesystem
 
+___docker run -it ubuntu___: shell is alredy started here
+
+___docker run -it jenkins___: this command will start the jenkins but not the bash. So we can not explor through the filesystem
+
+___docker exec -it <ID or NAME OF CONTAINER> /bin/bash___ : once the container is running in dettached mode, then we can use this command to explore through the file system or run any command on bash terminal
+
+___docker export -o hello.tar  <ID or NAME OF CONTAINER\>___ : this will make the filesystem of a stopped container in hello.tar file
+docker cp  <ID or NAME OF CONTAINER>:/ ./test : this will copy the the filesystem of a stopped container from / to ./test
+
+___docker run redis___ : this will fetch the latest version of redis and run on docker. The different version of an image can be seen on docker hub or whereever the repository is.
+                   
+___docker run redis:<TAG\>___  : here the tag version can be mentioned in order to run a specific version or tag. for eg. docker run redis:4.0
+
+# Attach to STDIN and to Terminal-
+- if we have a .sh script which prints on the terminal "please enter your name:" and then user enters his/her name through  stdin and then the
+script prints back the whole "please enter your name:<entered name>".
+
+- In such cases we need to start the container in intractive mode (-i) and with attached terminal (-t)
+
+___docker run -it <NAME OF CONTAINER\>___ 
+
+___docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simple-webapp___
+
+
+# Port mapping
+- Docker Host: its the machine on which docke is running, let say its ip is 192.168.5.10
+- When we run a container then every container gets an internal ip (172.17:0.2)
+- We run a container 'docker run simplewebapp' which will run on port 5555  
+- Most of the container use bridge network adoptor, which can be check by using 'docker inspect <CONTAINER NAME OR ID>'
+- By using the container ip from the host machine browser we will be able to access the 'simplewebapp'for eg.: http://172.17:0.2:5555 
+- However we will not be able to access 'simplewebapp' by using host machine ip address for eg.: http://192.168.5.10:5555 will return nothing
+- In order to access it we need port mapping like this: docker run -p 5555:5555 simplewebapp [docker run -p <HOST PORT>:<CONTAINER PORT> simplewebapp]
+- Multiple host ports can be mapped at once 'docker:- run -p 8080:8080 -p 50000:50000 -v /your/home:/var/jenkins_home jenkins'
+
+___docker run -p 3306:3306 mysql___
 
 
 
