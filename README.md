@@ -120,8 +120,8 @@ ___docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simpl
 - now we can delete the container and the will still be safe at /opt/datadir.
 
 However:
-- If we do not want to mapp the volume then the same container can be started again 
-  docker run -ia <CONTAINER: ID OR NAME>: all the data which was stored here, will still reside inside the container
+- If we do not want to mapp the volume then the same container can be started again with command
+  ___docker run -ia <CONTAINER: ID OR NAME>___: all the data which was stored here, will still reside inside the container
 
 - ___docker inspect <CONTAINER NAME\>___: this will give all the information about the docker container in json fomat
 
