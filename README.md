@@ -127,6 +127,14 @@ However:
 
 - ___docker logs <CONTAINER NAME\>___: will show the log output of the application, which was logged at stdout
 
+# Finding base image of an image
+___docker run python:3.6 cat /etc/*release* ___:  lets says our image is python:3.6
 
+# Environment variable
+___docker run -e <NAME-OF-ENVIRONMENT-VARIABLE\>:<VALUE-OF-ENVIRONMENT-VARIABLE\>___: Environment variable can be passed while running an image
+
+___docker inspect <NAME-OF-THE-CONTAINER-OR-ID\>___: inspecting Environment vairable on an running image
+
+___docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simple-webapp___
 
                  
