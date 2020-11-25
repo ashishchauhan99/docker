@@ -1,6 +1,5 @@
 # Table of Content
  [Chapter 1](#Chapter-1)
- 
  [Chapter 2](#Chapter-2)
  
  [Docker useful commands](#Docker-useful-commands)
