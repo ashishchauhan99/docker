@@ -21,6 +21,8 @@
  
  [Environment variable](#Environment-variable)
  
+ [Command vs Entrypoint](#Command-vs-Entrypoint)
+ 
  
  
 # Chapter 1
@@ -177,6 +179,15 @@ plain format: ENTRYPOINT command             ENTRYPOINT sleep 5
 json  format: ENTRYPOINT["command"]          ENTRYPOINT["sleep"]    
 ```
 now we can use *docker run ubuntu-sleeper 8* now 8 will be append to *sleep* and finally it will be *sleep 8*.
+However if just run *docker run ubuntu-sleeper* then we will get the error "missing operands Try sleep --help for more information". 
+To avoid this we can configure some default command. For this we can use the combination of Entrypoint and CMD:
+
+```
+ENTRYPOINT["sleep"] 
+CMD["5"]
+```
+now the user can use *docker run ubuntu-sleeper* internally it will take default and it will at the end "sleep 5".
+
 
 
 
