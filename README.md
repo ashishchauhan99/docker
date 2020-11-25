@@ -162,3 +162,21 @@ ___docker inspect <NAME-OF-THE-CONTAINER-OR-ID\>___: inspecting Environment vair
 
 ___docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simple-webapp___
                  
+# Command vs Entrypoint
+___CMD___: at the end of the docker image we define a command which starts the program, which runs within the container. This command can be defined into the following two formats:
+```
+plain format: CMD command param1                CMD sleep 5
+json  format: CMD["command", "param1"]          CMD["sleep", "5"]    
+```
+lets say with the above command we build an image called *ubuntu-sleeper* now when we run *docker run ubuntu-sleeper* then this image will sleep for 5 sec and then exit, but what if we want to to seep for 8 sec. For that we will have to type *docker run ubuntu-sleeper sleep 8*, now our *CMD["sleep", "5"]*  will be replaced with CMD["sleep", "8"] and image will sleep for 8 sec. 
+
+___Entrypoint___: what if we just want pass the parameter do the docker image instead of the whole command. So instead of *docker run ubuntu-sleeper sleep 8* this *docker run ubuntu-sleeper 8*.
+Such things can achived with Entrypoint. So the entrypoint will append the parameter to the command, now we will define our entrypoint in the build file like following:
+```
+plain format: ENTRYPOINT command             ENTRYPOINT sleep 5
+json  format: ENTRYPOINT["command"]          ENTRYPOINT["sleep"]    
+```
+now we can use *docker run ubuntu-sleeper 8* now 8 will be append to *sleep* and finally it will be *sleep 8*.
+
+
+
