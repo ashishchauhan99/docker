@@ -1,0 +1,3 @@
+- Install git image
+- Install gitea image and configure it for git
+- Build your own image for a spring-boot microservice
