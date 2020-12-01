@@ -181,7 +181,7 @@ CMD["5"]
 now the user can use *docker run ubuntu-sleeper* internally it will take default and it will at the end "sleep 5".
 
 # Container Communication
-## -- link
+## --link
 ## bridge network
 
 # Docker compose
