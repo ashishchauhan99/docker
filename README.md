@@ -12,8 +12,7 @@
  [Environment variable](#Environment-variable)<br/>
  [Command vs Entrypoint](#Command-vs-Entrypoint)<br/>
  [Container Communication](#Container-Communication])<br/>
-  &nbsp;&nbsp;[--link](##-link])<br/>
-  &nbsp;&nbsp;[bridge network](##bridge-network])<br/>
+
  
  
  
