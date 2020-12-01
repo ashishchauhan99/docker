@@ -12,7 +12,8 @@
  [Environment variable](#Environment-variable)<br/>
  [Command vs Entrypoint](#Command-vs-Entrypoint)<br/>
  [Container Commnication](#Container-Commnication])<br/>
-  &nbsp;&nbsp;fdsa[Container Commnication](#Container-Commnication])<br/>
+  &nbsp;&nbsp;[--link](#--link])<br/>
+  &nbsp;&nbsp;[bridge network](##bridge-network])<br/>
  
  
  
@@ -181,7 +182,7 @@ now the user can use *docker run ubuntu-sleeper* internally it will take default
 
 # Container Communication
 ## -- link
-## -- bridge network
+## bridge network
 
 # Docker compose
 
